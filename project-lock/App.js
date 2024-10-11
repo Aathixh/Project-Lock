@@ -4,16 +4,17 @@ import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 export default function App() {
   const [doorState, setDoorState] = useState("closed");
 
-  const toggleDoor = () => {
-    // Logic to send signal to ESP32
-    if (doorState === "closed") {
-      setDoorState("open");
-      console.log("opening");
-      // Send signal to open the door
-    } else {
-      setDoorState("closed");
-      console.log("closing");
-      // Send signal to close the door
+  const toggleDoor = async () => {
+    const url = `http://<ESP32_IP_ADDRESS>:80/${
+      doorState === "closed" ? "open" : "close"
+    }`;
+    try {
+      const response = await fetch(url);
+      const result = await response.text();
+      console.log(result);
+      setDoorState(doorState === "closed" ? "open" : "closed");
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
