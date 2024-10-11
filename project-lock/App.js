@@ -19,6 +19,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.title}>
+        <Text style={styles.titleText}>PROJECT LOCK</Text>
+      </View>
       <View
         style={[
           styles.outerCircle,
@@ -42,6 +45,15 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    position: "absolute",
+    top: 70,
+    alignItems: "center",
+  },
+  titleText: {
+    fontSize: 38,
+    fontWeight: "800",
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -68,7 +80,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#000",
     fontSize: 35,
-    fontWeight: "bold",
+    fontWeight: "600",
   },
   led: {
     position: "absolute",
