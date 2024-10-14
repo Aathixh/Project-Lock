@@ -5,7 +5,7 @@ export default function App() {
   const [doorState, setDoorState] = useState("closed");
 
   const toggleDoor = async () => {
-    const url = `http://<ESP32_IP_ADDRESS>:80/${
+    const url = `http://192.168.1.29:80/${
       doorState === "closed" ? "open" : "close"
     }`;
     try {
